@@ -16,30 +16,54 @@ int main()
     if (file) {
         std::string line;
         while (getline(file, line)) {
-            // Check and store .mat files
-            if (line.find(".mat") != std::string::npos) {
-                filePaths[0].push_back(line);
+            // Attempt to open the file at the path specified by 'line'
+            std::ifstream testFile(line);
+
+            // If the file can be opened, it exists, so store it in the appropriate vector
+            if (testFile) {
+                testFile.close(); // Close the file after checking
+                if (line.find(".mat") != std::string::npos) {
+                    filePaths[0].push_back(line);
+                }
+                else if (line.find(".sub") != std::string::npos) {
+                    filePaths[1].push_back(line);
+                }
+                else if (line.find(".jun") != std::string::npos) {
+                    filePaths[2].push_back(line);
+                }
+                else if (line.find(".exc") != std::string::npos) {
+                    filePaths[3].push_back(line);
+                }
+                else if (line.find(".par") != std::string::npos) {
+                    filePaths[4].push_back(line);
+                }
             }
-            // Check and store .sub files
-            else if (line.find(".sub") != std::string::npos) {
-                filePaths[1].push_back(line);
-            }
-            // Check and store .jun files
-            else if (line.find(".jun") != std::string::npos) {
-                filePaths[2].push_back(line);
-            }
-            // Check and store .exc files
-            else if (line.find(".exc") != std::string::npos) {
-                filePaths[3].push_back(line);
-            }
-            // Check and store .par files
-            else if (line.find(".par") != std::string::npos) {
-                filePaths[4].push_back(line);
+            else {
+                // If the file cannot be opened, print an error message with specific file type information
+                if (line.find(".mat") != std::string::npos) {
+                    std::cerr << "Error: MAT file does not exist - " << line << std::endl;
+                }
+                else if (line.find(".sub") != std::string::npos) {
+                    std::cerr << "Error: SUB file does not exist - " << line << std::endl;
+                }
+                else if (line.find(".jun") != std::string::npos) {
+                    std::cerr << "Error: JUN file does not exist - " << line << std::endl;
+                }
+                else if (line.find(".exc") != std::string::npos) {
+                    std::cerr << "Error: EXC file does not exist - " << line << std::endl;
+                }
+                else if (line.find(".par") != std::string::npos) {
+                    std::cerr << "Error: PAR file does not exist - " << line << std::endl;
+                }
+                else {
+                    // If the file extension is not recognized, print a generic error message
+                    std::cerr << "Error: File does not exist or unsupported file type - " << line << std::endl;
+                }
             }
         }
     }
     else {
-        std::cerr << "Unable to open file" << std::endl;
+        std::cerr << "Unable to open the input file" << std::endl;
         return 1;
     }
 
