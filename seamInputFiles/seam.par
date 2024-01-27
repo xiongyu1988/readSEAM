@@ -1,0 +1,15 @@
+! SEAM PARAMETER FILE TEMPLATE WRITTEN BY SEAM3d Version 2011
+!
+ SEAM model[1]
+ 0, 0, 0, 0, 
+ 100, 10000,  -1, 99., -1,
+ 1, 0, 6.000E-01, 1.000E+00, 
+ 1
+ 4, 1
+ 1, 1
+ 0
+ 1
+ 2
+ 2
+ 0
+ 1, 1, 1E-12,

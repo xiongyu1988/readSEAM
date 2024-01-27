@@ -4,78 +4,120 @@
 #include <string>
 #include <vector>
 
-std::string MATFIL, SUBFIL, JNCFIL, EXCFIL, PARFIL, UNIFIL, FNCFIL;
+#include "filemanager.h"
 
-const std::string FILEIN{ "seamInputFiles/seam.in" };
+std::string UNIFIL, FNCFIL;
+
+std::string fileFolder = "seamInputFiles\\";
+std::string fileName = "seam.in";
+const std::string FILEIN{ fileFolder + fileName };
+
+std::string extractFilename(const std::string& fullPath) {
+	std::string directory = "seamInputFiles\\";
+	size_t pos = fullPath.find(directory);
+	if (pos != std::string::npos) {
+		// Add the length of directory to the found position to start from the end of the directory name
+		return fullPath.substr(pos + directory.length());
+	}
+	// Return empty string if the directory is not found in the path
+	return ""; 
+}
 
 int main()
 {
-    std::ifstream file(FILEIN); 
-    std::vector<std::vector<std::string>> filePaths(5); 
+	std::ifstream file(FILEIN);
+	FileManager fileManager; // Instance of FileManager to store file path
 
-    if (file) {
-        std::string line;
-        while (getline(file, line)) {
-            // Attempt to open the file at the path specified by 'line'
-            std::ifstream testFile(line);
+	if (file) {
+		std::string line;
+		while (getline(file, line)) {
+			char cAddress = line[0];
+			char cDrive = 'C';
+			if (cAddress != cDrive) {
+				continue;
+			}
 
-            // If the file can be opened, it exists, so store it in the appropriate vector
-            if (testFile) {
-                testFile.close(); // Close the file after checking
-                if (line.find(".mat") != std::string::npos) {
-                    filePaths[0].push_back(line);
-                }
-                else if (line.find(".sub") != std::string::npos) {
-                    filePaths[1].push_back(line);
-                }
-                else if (line.find(".jun") != std::string::npos) {
-                    filePaths[2].push_back(line);
-                }
-                else if (line.find(".exc") != std::string::npos) {
-                    filePaths[3].push_back(line);
-                }
-                else if (line.find(".par") != std::string::npos) {
-                    filePaths[4].push_back(line);
-                }
-            }
-            else {
-                // If the file cannot be opened, print an error message with specific file type information
-                if (line.find(".mat") != std::string::npos) {
-                    std::cerr << "Error: MAT file does not exist - " << line << std::endl;
-                }
-                else if (line.find(".sub") != std::string::npos) {
-                    std::cerr << "Error: SUB file does not exist - " << line << std::endl;
-                }
-                else if (line.find(".jun") != std::string::npos) {
-                    std::cerr << "Error: JUN file does not exist - " << line << std::endl;
-                }
-                else if (line.find(".exc") != std::string::npos) {
-                    std::cerr << "Error: EXC file does not exist - " << line << std::endl;
-                }
-                else if (line.find(".par") != std::string::npos) {
-                    std::cerr << "Error: PAR file does not exist - " << line << std::endl;
-                }
-                else {
-                    // If the file extension is not recognized, print a generic error message
-                    std::cerr << "Error: File does not exist or unsupported file type - " << line << std::endl;
-                }
-            }
-        }
-    }
-    else {
-        std::cerr << "Unable to open the input file" << std::endl;
-        return 1;
-    }
+			if (line.find(".mat") != std::string::npos) {
+				std::string filename = extractFilename(line);
+				std::ifstream testFile(fileFolder + filename);
+				if (testFile) {
+					fileManager.setMATFIL(line);
+				}
+				else {
+					if (line.find(".mat") != std::string::npos) {
+						std::cerr << "Error: MAT file does not exist - " << line << std::endl;
+					}
+				}
+			}
+			else if (line.find(".sub") != std::string::npos) {
+				std::string filename = extractFilename(line);
+				std::ifstream testFile(fileFolder + filename);
+				if (testFile) {
+					fileManager.setSUBFIL(line);
+				}
+				else {
+					if (line.find(".sub") != std::string::npos) {
+						std::cerr << "Error: SUB file does not exist - " << line << std::endl;
+					}
+				}
+			}
+			else if (line.find(".jun") != std::string::npos) {
+				std::string filename = extractFilename(line);
+				std::ifstream testFile(fileFolder + filename);
+				if (testFile) {
+					fileManager.setJNCFIL(line);
+				}
+				else {
+					if (line.find(".jun") != std::string::npos) {
+						std::cerr << "Error: JUN file does not exist - " << line << std::endl;
+					}
+				}
+			}
+			else if (line.find(".exc") != std::string::npos) {
+				std::string filename = extractFilename(line);
+				std::ifstream testFile(fileFolder + filename);
+				if (testFile) {
+					fileManager.setEXCFIL(line);
+				}
+				else {
+					if (line.find(".exc") != std::string::npos) {
+						std::cerr << "Error: EXC file does not exist - " << line << std::endl;
+					}
+				}
+			}
+			else if (line.find(".par") != std::string::npos) {
+				std::string filename = extractFilename(line);
+				std::ifstream testFile(fileFolder + filename);
+				if (testFile) {
+					fileManager.setPARFIL(line);
+				}
+				else {
+					if (line.find(".par") != std::string::npos) {
+						std::cerr << "Error: PAR file does not exist - " << line << std::endl;
+					}
+				}
+			}
+			else {
+				// If the file extension is not recognized, print a generic error message
+				std::cerr << "Error: File does not exist or unsupported file type - " << line << std::endl;
+			}
+		}
+	}
+	else {
+		std::cerr << "Unable to open the input file" << std::endl;
+		return 1;
+	}
 
-    for (int i = 0; i < filePaths.size(); ++i) {
-        for (const auto& path : filePaths[i]) {
-            std::cout << path << std::endl;
-        }
-    }
+	std::cout << "MAT file path: " << fileManager.getMATFIL() << std::endl;
+	std::cout << "SUB file path: " << fileManager.getSUBFIL() << std::endl;
+	std::cout << "JNC file path: " << fileManager.getJNCFIL() << std::endl;
+	std::cout << "EXC file path: " << fileManager.getEXCFIL() << std::endl;
+	std::cout << "PAR file path: " << fileManager.getPARFIL() << std::endl;
 
-    //ISEAM();
 
-    return 0;
+	//ISEAM();
+
+	return 0;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

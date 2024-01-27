@@ -1,0 +1,310 @@
+! SEAM JUNCTION FILE WRITTEN BY SEAM3d Version 2011
+!
+! SUB#   EC   CONSTANT                  COMMENTS
+! JNC#  TYPE    DIM           (START THIS LINE WITH AN = )
+!-----X-----X---------X
+
+! area connection: New_Acoustic_Connect_#1
+    11    20           1_as acoustic space
+    21    20           2_as acoustic space
+=    1     4 6.779E-01 translation EdgeOff;Z
+
+! area connection: New_Acoustic_Connect_#2
+    21    20           2_as acoustic space
+    31    20           3_as acoustic space
+=    2     4 2.254E-01 translation EdgeOff;Z
+
+! area connection: New_Acoustic_Connect_#3
+    31    20           3_as acoustic space
+    41    20           4_as acoustic space
+=    3     4 4.249E-01 translation EdgeOff;Z
+
+! area connection: New_Acoustic_Connect_#4
+    11    20           1_as acoustic space
+    41    20           4_as acoustic space
+=    4     4 2.254E-01 translation EdgeOff;Z
+
+! line connection: New_Structural_Connect_#1
+    72    20           3_i plate inplane
+    52    20           1_i plate inplane
+=    5    21 9.830E-01 translation X
+
+    71    20           3_b plate bending
+    52    20           1_i plate inplane
+=    6    21 9.830E-01 translation Y
+
+    72    20           3_i plate inplane
+    51    20           1_b plate bending
+=    7    21 9.830E-01 translation Z
+
+    71    20           3_b plate bending
+    51    20           1_b plate bending
+=    8    22 9.830E-01 rotation X
+
+! line connection: New_Structural_Connect_#2
+    62    20           2_i plate inplane
+    52    20           1_i plate inplane
+=    9    21 9.830E-01 translation X
+
+    62    20           2_i plate inplane
+    51    20           1_b plate bending
+=   10    21 9.830E-01 translation Y
+
+    61    20           2_b plate bending
+    52    20           1_i plate inplane
+=   11    21 9.830E-01 translation Z
+
+    61    20           2_b plate bending
+    51    20           1_b plate bending
+=   12    22 9.830E-01 rotation X
+
+! line connection: New_Structural_Connect_#3
+    82    20           4_i plate inplane
+    52    20           1_i plate inplane
+=   13    21 6.300E-01 translation X
+
+    82    20           4_i plate inplane
+    51    20           1_b plate bending
+=   14    21 6.300E-01 translation Y
+
+    81    20           4_b plate bending
+    52    20           1_i plate inplane
+=   15    21 6.300E-01 translation Z
+
+    81    20           4_b plate bending
+    51    20           1_b plate bending
+=   16    22 6.300E-01 rotation X
+
+! line connection: New_Structural_Connect_#4
+    92    20           5_i plate inplane
+    52    20           1_i plate inplane
+=   17    21 9.830E-01 translation X
+
+    92    20           5_i plate inplane
+    51    20           1_b plate bending
+=   18    21 9.830E-01 translation Y
+
+    91    20           5_b plate bending
+    52    20           1_i plate inplane
+=   19    21 9.830E-01 translation Z
+
+    91    20           5_b plate bending
+    51    20           1_b plate bending
+=   20    22 9.830E-01 rotation X
+
+! line connection: New_Structural_Connect_#5
+    82    20           4_i plate inplane
+    72    20           3_i plate inplane
+=   21    21 1.178E+00 translation X
+
+    81    20           4_b plate bending
+    72    20           3_i plate inplane
+=   22    21 1.178E+00 translation Y
+
+    82    20           4_i plate inplane
+    71    20           3_b plate bending
+=   23    21 1.178E+00 translation Z
+
+    81    20           4_b plate bending
+    71    20           3_b plate bending
+=   24    22 1.178E+00 rotation X
+
+! line connection: New_Structural_Connect_#6
+    72    20           3_i plate inplane
+    92    20           5_i plate inplane
+=   25    21 1.900E+00 translation X
+
+    71    20           3_b plate bending
+    92    20           5_i plate inplane
+=   26    21 1.900E+00 translation Y
+
+    72    20           3_i plate inplane
+    91    20           5_b plate bending
+=   27    21 1.900E+00 translation Z
+
+    71    20           3_b plate bending
+    91    20           5_b plate bending
+=   28    22 1.900E+00 rotation X
+
+! line connection: New_Structural_Connect_#7
+    72    20           3_i plate inplane
+   102    20           6_i plate inplane
+=   29    21 7.600E-01 translation X
+
+    72    20           3_i plate inplane
+   101    20           6_b plate bending
+=   30    21 7.600E-01 translation Y
+
+    71    20           3_b plate bending
+   102    20           6_i plate inplane
+=   31    21 7.600E-01 translation Z
+
+    71    20           3_b plate bending
+   101    20           6_b plate bending
+=   32    22 7.600E-01 rotation X
+
+! line connection: New_Structural_Connect_#8
+    82    20           4_i plate inplane
+   102    20           6_i plate inplane
+=   33    21 6.300E-01 translation X
+
+    82    20           4_i plate inplane
+   101    20           6_b plate bending
+=   34    21 6.300E-01 translation Y
+
+    81    20           4_b plate bending
+   102    20           6_i plate inplane
+=   35    21 6.300E-01 translation Z
+
+    81    20           4_b plate bending
+   101    20           6_b plate bending
+=   36    22 6.300E-01 rotation X
+
+! line connection: New_Structural_Connect_#9
+    82    20           4_i plate inplane
+    62    20           2_i plate inplane
+=   37    21 1.178E+00 translation X
+
+    81    20           4_b plate bending
+    62    20           2_i plate inplane
+=   38    21 1.178E+00 translation Y
+
+    82    20           4_i plate inplane
+    61    20           2_b plate bending
+=   39    21 1.178E+00 translation Z
+
+    81    20           4_b plate bending
+    61    20           2_b plate bending
+=   40    22 1.178E+00 rotation X
+
+! line connection: New_Structural_Connect_#10
+   102    20           6_i plate inplane
+    62    20           2_i plate inplane
+=   41    21 7.600E-01 translation X
+
+   101    20           6_b plate bending
+    62    20           2_i plate inplane
+=   42    21 7.600E-01 translation Y
+
+   102    20           6_i plate inplane
+    61    20           2_b plate bending
+=   43    21 7.600E-01 translation Z
+
+   101    20           6_b plate bending
+    61    20           2_b plate bending
+=   44    22 7.600E-01 rotation X
+
+! line connection: New_Structural_Connect_#11
+   102    20           6_i plate inplane
+    92    20           5_i plate inplane
+=   45    21 6.300E-01 translation X
+
+   101    20           6_b plate bending
+    92    20           5_i plate inplane
+=   46    21 6.300E-01 translation Y
+
+   102    20           6_i plate inplane
+    91    20           5_b plate bending
+=   47    21 6.300E-01 translation Z
+
+   101    20           6_b plate bending
+    91    20           5_b plate bending
+=   48    22 6.300E-01 rotation X
+
+! line connection: New_Structural_Connect_#12
+    62    20           2_i plate inplane
+    92    20           5_i plate inplane
+=   49    21 1.900E+00 translation X
+
+    62    20           2_i plate inplane
+    91    20           5_b plate bending
+=   50    21 1.900E+00 translation Y
+
+    61    20           2_b plate bending
+    92    20           5_i plate inplane
+=   51    21 1.900E+00 translation Z
+
+    61    20           2_b plate bending
+    91    20           5_b plate bending
+=   52    22 1.900E+00 rotation X
+
+! area connection: New_Structural Acoustic_Connect_#1
+    21    20           2_as acoustic space
+    51    10           1_b plate bending
+=   53     4 3.097E-01 translation Z
+
+! area connection: New_Structural Acoustic_Connect_#2
+    11    20           1_as acoustic space
+    51    10           1_b plate bending
+=   54     4 3.097E-01 translation Z
+
+! area connection: New_Structural Acoustic_Connect_#3
+    11    20           1_as acoustic space
+    61    10           2_b plate bending
+=   55     4 6.779E-01 translation Z
+
+! area connection: New_Structural Acoustic_Connect_#4
+    41    20           4_as acoustic space
+    61    10           2_b plate bending
+=   56     4 4.214E-01 translation Z
+
+! area connection: New_Structural Acoustic_Connect_#5
+    21    20           2_as acoustic space
+    71    10           3_b plate bending
+=   57     4 6.779E-01 translation Z
+
+! area connection: New_Structural Acoustic_Connect_#6
+    31    20           3_as acoustic space
+    71    10           3_b plate bending
+=   58     4 4.214E-01 translation Z
+
+! area connection: New_Structural Acoustic_Connect_#7
+    31    20           3_as acoustic space
+   101    10           6_b plate bending
+=   59     4 2.254E-01 translation Z
+
+! area connection: New_Structural Acoustic_Connect_#8
+    41    20           4_as acoustic space
+   101    10           6_b plate bending
+=   60     4 2.254E-01 translation Z
+
+! area connection: New_Structural Acoustic_Connect_#13
+    31    20           3_as acoustic space
+    91    10           5_b plate bending
+=   61     4 1.855E-01 translation Z
+
+! area connection: New_Structural Acoustic_Connect_#14
+    11    20           1_as acoustic space
+    91    10           5_b plate bending
+=   62     4 4.114E-01 translation Z
+
+! area connection: New_Structural Acoustic_Connect_#15
+    21    20           2_as acoustic space
+    91    10           5_b plate bending
+=   63     4 4.114E-01 translation Z
+
+! area connection: New_Structural Acoustic_Connect_#16
+    41    20           4_as acoustic space
+    91    10           5_b plate bending
+=   64     4 1.855E-01 translation Z
+
+! area connection: New_Structural Acoustic_Connect_#17
+    21    20           2_as acoustic space
+    81    10           4_b plate bending
+=   65     4 1.855E-01 translation Z
+
+! area connection: New_Structural Acoustic_Connect_#18
+    11    20           1_as acoustic space
+    81    10           4_b plate bending
+=   66     4 1.855E-01 translation Z
+
+! area connection: New_Structural Acoustic_Connect_#19
+    31    20           3_as acoustic space
+    81    10           4_b plate bending
+=   67     4 1.855E-01 translation Z
+
+! area connection: New_Structural Acoustic_Connect_#20
+    41    20           4_as acoustic space
+    81    10           4_b plate bending
+=   68     4 1.855E-01 translation Z
+

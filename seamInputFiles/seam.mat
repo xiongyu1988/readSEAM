@@ -1,0 +1,50 @@
+((MATDATA
+! SEAM MATERIAL FILE WRITTEN BY SEAM3d Version 2011
+!
+!MATL#       MATERIAL TYPE       MATERIAL NAME           COMMENTS
+!-----X-------------------X-------------------X---------X
+!          DATA1     DATA2     DATA3     DATA4     DATA5     DATA6 COMMENTS
+!-----X---------X---------X---------X---------X---------X---------X
+! Subsystem materials for element: AC1_#1
+    11                 Gas                    
+       1.200E+00 3.400E+02 1.600E-02                              
+! Subsystem materials for element: AC2_#2
+    21                 Gas                    
+       1.200E+00 3.400E+02 1.600E-02                              
+! Subsystem materials for element: AC3_#3
+    31                 Gas                    
+       1.200E+00 3.400E+02 1.600E-02                              
+! Subsystem materials for element: AC4_#4
+    41                 Gas                    
+       1.200E+00 3.400E+02 1.600E-02                              
+! Subsystem materials for element: Front_#1
+    51          IsoElastic                    
+       8.000E+03 2.100E+11 7.700E+10 3.300E-01 6.000E-02          
+    52          IsoElastic                    
+       8.000E+03 2.100E+11 7.895E+10 3.300E-01 6.000E-02          
+! Subsystem materials for element: Left_#2
+    61          IsoElastic                    
+       8.000E+03 2.100E+11 7.700E+10 3.300E-01 6.000E-02          
+    62          IsoElastic                    
+       8.000E+03 2.100E+11 7.895E+10 3.300E-01 6.000E-02          
+! Subsystem materials for element: Right_#3
+    71          IsoElastic                    
+       8.000E+03 2.100E+11 7.700E+10 3.300E-01 6.000E-02          
+    72          IsoElastic                    
+       8.000E+03 2.100E+11 7.895E+10 3.300E-01 6.000E-02          
+! Subsystem materials for element: Top_#4
+    81          IsoElastic                    
+       8.000E+03 2.100E+11 7.700E+10 3.300E-01 6.000E-02          
+    82          IsoElastic                    
+       8.000E+03 2.100E+11 7.895E+10 3.300E-01 6.000E-02          
+! Subsystem materials for element: Bottom_#5
+    91          IsoElastic                    
+       8.000E+03 2.100E+11 7.700E+10 3.300E-01 6.000E-02          
+    92          IsoElastic                    
+       8.000E+03 2.100E+11 7.895E+10 3.300E-01 6.000E-02          
+! Subsystem materials for element: Back_#6
+   101          IsoElastic                    
+       8.000E+03 2.100E+11 7.700E+10 3.300E-01 6.000E-02          
+   102          IsoElastic                    
+       8.000E+03 2.100E+11 7.895E+10 3.300E-01 6.000E-02          
+))

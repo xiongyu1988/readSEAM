@@ -1,0 +1,7 @@
+((EXCDATA
+! SEAM EXCITATION FILE TEMPLATE WRITTEN BY SEAM3d Version 2011
+!
+!EXTYP CASE# S#/J#  CONSTANT  EXPONENT EX_BW        COMMENTS
+!-----X-----X-----X---------X---------X-----X
+     0     1    11 1.000E-03       0.0     1 power input
+))

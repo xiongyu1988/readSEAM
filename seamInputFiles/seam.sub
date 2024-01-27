@@ -1,0 +1,56 @@
+((SUBDATA
+! SEAM SUBSYSTEM FILE WRITTEN BY SEAM3d Version 2011
+!
+! SUB#               TYPE                NAME      MAT#  
+!-----X-------------------X-------------------X---------X comments
+!            L1        L2        L3        L4        L5        L6   
+!-----X---------X---------X---------X---------X---------X---------X-commments
+! Acoustic space element: AC1 1
+    11                 A3D                1_as        11
+                           2.135E-01                              
+! Acoustic space element: AC2 2
+    21                 A3D                2_as        21
+                           2.135E-01                              
+! Acoustic space element: AC3 3
+    31                 A3D                3_as        31
+                           1.327E-01                              
+! Acoustic space element: AC4 4
+    41                 A3D                4_as        41
+                           1.327E-01                              
+! Plate element: Front 1
+    51                 B2D                 1_b        51
+                 6.193E-01 1.500E-03                              
+! Plate element: Front 1
+    52                 I2D                 1_i        52
+               0 6.193E-01 1.500E-03                              
+! Plate element: Left 2
+    61                 B2D                 2_b        61
+                 8.484E-01 1.500E-03                              
+! Plate element: Left 2
+    62                 I2D                 2_i        62
+               0 8.484E-01 1.500E-03                              
+! Plate element: Right 3
+    71                 B2D                 3_b        71
+                 8.484E-01 1.500E-03                              
+! Plate element: Right 3
+    72                 I2D                 3_i        72
+               0 8.484E-01 1.500E-03                              
+! Plate element: Top 4
+    81                 B2D                 4_b        81
+                 7.421E-01 1.500E-03                              
+! Plate element: Top 4
+    82                 I2D                 4_i        82
+               0 7.421E-01 1.500E-03                              
+! Plate element: Bottom 5
+    91                 B2D                 5_b        91
+                 1.197E+00 1.500E-03                              
+! Plate element: Bottom 5
+    92                 I2D                 5_i        92
+               0 1.197E+00 1.500E-03                              
+! Plate element: Back 6
+   101                 B2D                 6_b       101
+                 4.788E-01 1.500E-03                              
+! Plate element: Back 6
+   102                 I2D                 6_i       102
+               0 4.788E-01 1.500E-03                              
+))

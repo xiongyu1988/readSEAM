@@ -1,0 +1,70 @@
+
+
+
+
+                         S E A M   V E R S I O N  3 . 3 7
+
+
+                        Statistical Energy Analysis Model
+                         for Dynamic Analysis of Systems
+
+
+        (C) Copyright 2023 Altair Engineering Inc. All Rights Reserved.
+                   1985-2023 Cambridge Collaborative Inc.
+
+         SEAM (R) is a Registered Trademark of Altair Engineering, Inc.
+                         Serial Number 337_020916_4000_32
+
+
+DATE:01/25/2024 TIME:17:37
+
+
+ FILENAME FOR MATERIAL MODEL INPUT? :
+C:\Users\yxiong\Desktop\SEAM\seam.mat
+
+
+ FILENAME FOR SUBSYSTEM INPUT? :
+C:\Users\yxiong\Desktop\SEAM\seam.sub
+
+
+ FILENAME FOR JUNCTION INPUT? :
+C:\Users\yxiong\Desktop\SEAM\seam.jun
+
+
+ FILENAME FOR EXCITATION INPUT? :
+C:\Users\yxiong\Desktop\SEAM\seam.exc
+
+
+ FILENAME FOR PARAMETER INPUT? :
+C:\Users\yxiong\Desktop\SEAM\seam.par
+
+ JOB NAME?
+ SEAM model[1]
+
+
+ SEAM model[1]
+
+
+
+SUMMARY OF PARAMETER FILE "C:\Users\yxiong\Desktop\SEAM\seam.par   "
+
+ JOBNAME                 : SEAM model[1]
+ ECHO PRINT M, S, J, E   :   0 0 0 0
+ F_LO,F_HI,I_BW,A_BW,C_BW:    100.00  10000.00    -1.000    99.000    -1.000
+ NSTEPS, NST_ON, BETA, FS:   1   1        1.00      0.00
+ UNITS OUT (1=LIN, 2=DB) :   1
+ STRUCT_QUANTITY, REF    :   4 1.00E+00
+ SPACE_QUANTITY,  REF    :   1 1.00E+00
+ PRINT COUPLING MATRIX   :   0
+ PRINT POWER FLOWS       :   1
+ SELECTED SUBSYSTEMS     :   2
+ SELECTED JUNCTIONS      :   2
+ REF_W, REF_E, REF_I     :  1.00E+00  1.00E+00  1.00E-12
+
+
+
+
+
+MATERIAL MODEL DATA TAKEN FROM: C:\Users\yxiong\Desktop\SEAM\seam.mat
+
+ TOTAL NUMBER OF MATERIAL MODELS =   16
