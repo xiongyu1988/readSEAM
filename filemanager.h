@@ -3,6 +3,9 @@
 
 class FileManager {
 public:
+    void setfileFolder(const std::string& path) {
+        fileFolder = path;
+    }
     // Setter for MATFIL, SUBFIL, JNCFIL, EXCFIL, PARFIL
     void setMATFIL(const std::string& path) {
         MATFIL = path;
@@ -20,6 +23,9 @@ public:
         PARFIL = path;
     }
 
+    const std::string& getfileFolder() const {
+        return fileFolder;
+    }
     // Getter for MATFIL, SUBFIL, JNCFIL, EXCFIL, PARFIL
     const std::string& getMATFIL() const {
         return MATFIL;
@@ -38,6 +44,8 @@ public:
     }
 
 private:
+    std::string fileFolder;
+
     std::string MATFIL; // Member variable to store .mat file path
     std::string SUBFIL; // Member variable to store .sub file path
     std::string JNCFIL; // Member variable to store .jnc file path

@@ -5,28 +5,20 @@
 #include <vector>
 
 #include "filemanager.h"
+#include "tools.h"
 
 std::string UNIFIL, FNCFIL;
 
-std::string fileFolder = "seamInputFiles\\";
-std::string fileName = "seam.in";
-const std::string FILEIN{ fileFolder + fileName };
-
-std::string extractFilename(const std::string& fullPath) {
-	std::string directory = "seamInputFiles\\";
-	size_t pos = fullPath.find(directory);
-	if (pos != std::string::npos) {
-		// Add the length of directory to the found position to start from the end of the directory name
-		return fullPath.substr(pos + directory.length());
-	}
-	// Return empty string if the directory is not found in the path
-	return ""; 
-}
-
 int main()
 {
-	std::ifstream file(FILEIN);
+	tools tools;
 	FileManager fileManager; // Instance of FileManager to store file path
+	fileManager.setfileFolder("seamInputFiles\\");
+
+	std::string fileName = "seam.in";
+	const std::string FILEIN{ fileManager.getfileFolder() + fileName };
+
+	std::ifstream file(FILEIN);
 
 	if (file) {
 		std::string line;
@@ -38,8 +30,8 @@ int main()
 			}
 
 			if (line.find(".mat") != std::string::npos) {
-				std::string filename = extractFilename(line);
-				std::ifstream testFile(fileFolder + filename);
+				std::string filename = tools::extractFilename(line);
+				std::ifstream testFile(fileManager.getfileFolder() + filename);
 				if (testFile) {
 					fileManager.setMATFIL(line);
 				}
@@ -50,8 +42,8 @@ int main()
 				}
 			}
 			else if (line.find(".sub") != std::string::npos) {
-				std::string filename = extractFilename(line);
-				std::ifstream testFile(fileFolder + filename);
+				std::string filename = tools::extractFilename(line);
+				std::ifstream testFile(fileManager.getfileFolder() + filename);
 				if (testFile) {
 					fileManager.setSUBFIL(line);
 				}
@@ -62,8 +54,8 @@ int main()
 				}
 			}
 			else if (line.find(".jun") != std::string::npos) {
-				std::string filename = extractFilename(line);
-				std::ifstream testFile(fileFolder + filename);
+				std::string filename = tools::extractFilename(line);
+				std::ifstream testFile(fileManager.getfileFolder() + filename);
 				if (testFile) {
 					fileManager.setJNCFIL(line);
 				}
@@ -74,8 +66,8 @@ int main()
 				}
 			}
 			else if (line.find(".exc") != std::string::npos) {
-				std::string filename = extractFilename(line);
-				std::ifstream testFile(fileFolder + filename);
+				std::string filename = tools::extractFilename(line);
+				std::ifstream testFile(fileManager.getfileFolder() + filename);
 				if (testFile) {
 					fileManager.setEXCFIL(line);
 				}
@@ -86,8 +78,8 @@ int main()
 				}
 			}
 			else if (line.find(".par") != std::string::npos) {
-				std::string filename = extractFilename(line);
-				std::ifstream testFile(fileFolder + filename);
+				std::string filename = tools::extractFilename(line);
+				std::ifstream testFile(fileManager.getfileFolder() + filename);
 				if (testFile) {
 					fileManager.setPARFIL(line);
 				}
