@@ -1,10 +1,13 @@
 
-#include <fstream>
 #include <iostream>
-#include <string>
+#include <fstream>
+#include <sstream>
+#include <map>
 #include <vector>
+#include <string>
 
 #include "filemanager.h"
+#include "ParFileReader.h"
 #include "tools.h"
 
 std::string UNIFIL, FNCFIL;
@@ -107,6 +110,22 @@ int main()
 	std::cout << "PAR file path: " << fileManager.getPARFIL() << std::endl;
 
 
+
+	ParFileReader reader;
+
+	std::string filename = fileManager.getfileFolder() + "seam.par";
+
+	if (reader.readFromFile(filename)) {
+		const auto& data = reader.getData();
+		// For demonstration, print the data
+		for (const auto& entry : data) {
+			std::cout << entry.first << ": ";
+			for (const auto& item : entry.second) {
+				std::cout << item << " ";
+			}
+			std::cout << std::endl;
+		}
+	}
 	//ISEAM();
 
 	return 0;
