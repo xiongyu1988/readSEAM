@@ -8,13 +8,13 @@
 
 #include "filemanager.h"
 #include "ParFileReader.h"
-#include "tools.h"
+#include "MatFileReader.h"
+#include "SubFileReader.h"
 
 std::string UNIFIL, FNCFIL;
 
 int main()
 {
-	tools tools;
 	FileManager fileManager; // Instance of FileManager to store file path
 	fileManager.setfileFolder("seamInputFiles\\");
 
@@ -33,7 +33,7 @@ int main()
 			}
 
 			if (line.find(".mat") != std::string::npos) {
-				std::string filename = tools::extractFilename(line);
+				std::string filename = fileManager.extractFilename(line);
 				std::ifstream testFile(fileManager.getfileFolder() + filename);
 				if (testFile) {
 					fileManager.setMATFIL(line);
@@ -45,7 +45,7 @@ int main()
 				}
 			}
 			else if (line.find(".sub") != std::string::npos) {
-				std::string filename = tools::extractFilename(line);
+				std::string filename = fileManager.extractFilename(line);
 				std::ifstream testFile(fileManager.getfileFolder() + filename);
 				if (testFile) {
 					fileManager.setSUBFIL(line);
@@ -57,7 +57,7 @@ int main()
 				}
 			}
 			else if (line.find(".jun") != std::string::npos) {
-				std::string filename = tools::extractFilename(line);
+				std::string filename = fileManager.extractFilename(line);
 				std::ifstream testFile(fileManager.getfileFolder() + filename);
 				if (testFile) {
 					fileManager.setJNCFIL(line);
@@ -69,7 +69,7 @@ int main()
 				}
 			}
 			else if (line.find(".exc") != std::string::npos) {
-				std::string filename = tools::extractFilename(line);
+				std::string filename = fileManager.extractFilename(line);
 				std::ifstream testFile(fileManager.getfileFolder() + filename);
 				if (testFile) {
 					fileManager.setEXCFIL(line);
@@ -81,7 +81,7 @@ int main()
 				}
 			}
 			else if (line.find(".par") != std::string::npos) {
-				std::string filename = tools::extractFilename(line);
+				std::string filename = fileManager.extractFilename(line);
 				std::ifstream testFile(fileManager.getfileFolder() + filename);
 				if (testFile) {
 					fileManager.setPARFIL(line);
@@ -109,35 +109,34 @@ int main()
 	std::cout << "EXC file path: " << fileManager.getEXCFIL() << std::endl;
 	std::cout << "PAR file path: " << fileManager.getPARFIL() << std::endl;
 
+	std::cout << "=========================================================\n";
+	std::cout << std::endl;
 
-
-	ParFileReader reader;
-
+	ParFileReader parReader;
 	std::string filename = fileManager.getfileFolder() + "seam.par";
+	parReader.readFromFile(filename);
+	parReader.displayParameters();
 
-	if (reader.readFromFile(filename)) {
-		const auto& data = reader.getData();
-		// For demonstration, print the data
-		for (const auto& entry : data) {
-			std::cout << entry.first << ": ";
-			for (const auto& item : entry.second) {
-				std::cout << item << " ";
-			}
-			std::cout << std::endl;
-		}
-	}
+	std::cout << "=========================================================\n";
+	std::cout << std::endl;
+
+	MatFileReader matReader;
+	matReader.readMatFile(fileManager.getfileFolder() + "seam.mat");  
+	matReader.displayMaterials();
+
+	std::cout << "=========================================================\n";
+	std::cout << std::endl;
+
+	SubFileReader subReader;
+	subReader.readSubFile(fileManager.getfileFolder() + "seam.sub");
+	subReader.displaySubsystems();
+
 	//ISEAM();
+	//GSEAM();
+	//GSEAM INPUTS, PRINTS, AND STORES SUBSYSTEM, MATERIAL
+	//MODEL DEFINITION, AND JUNCTION DATA FOR SEAM.
+
+	//MATERIAL DATA
 
 	return 0;
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file

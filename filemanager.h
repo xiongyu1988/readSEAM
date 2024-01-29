@@ -43,6 +43,17 @@ public:
         return PARFIL;
     }
 
+    static std::string extractFilename(const std::string& fullPath) {
+        std::string directory = "seamInputFiles\\";
+        size_t pos = fullPath.find(directory);
+        if (pos != std::string::npos) {
+            // Add the length of directory to the found position to start from the end of the directory name
+            return fullPath.substr(pos + directory.length());
+        }
+        // Return empty string if the directory is not found in the path
+        return "";
+    }
+
 private:
     std::string fileFolder;
 
