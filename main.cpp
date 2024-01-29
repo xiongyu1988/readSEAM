@@ -10,6 +10,7 @@
 #include "ParFileReader.h"
 #include "MatFileReader.h"
 #include "SubFileReader.h"
+#include "ExcFileReader.h"
 
 std::string UNIFIL, FNCFIL;
 
@@ -130,6 +131,13 @@ int main()
 	SubFileReader subReader;
 	subReader.readSubFile(fileManager.getfileFolder() + "seam.sub");
 	subReader.displaySubsystems();
+
+	std::cout << "=========================================================\n";
+	std::cout << std::endl;
+
+	ExcFileReader excReader;
+	excReader.readExcFile(fileManager.getfileFolder() + "seam.exc");
+	excReader.displayExcitations();
 
 	//ISEAM();
 	//GSEAM();
