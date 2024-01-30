@@ -11,6 +11,7 @@
 #include "MatFileReader.h"
 #include "SubFileReader.h"
 #include "ExcFileReader.h"
+#include "JunFileReader.h"
 
 std::string UNIFIL, FNCFIL;
 
@@ -138,6 +139,13 @@ int main()
 	ExcFileReader excReader;
 	excReader.readExcFile(fileManager.getfileFolder() + "seam.exc");
 	excReader.displayExcitations();
+
+	std::cout << "=========================================================\n";
+	std::cout << std::endl;
+
+	JunFileReader junReader;
+	junReader.readExcFile(fileManager.getfileFolder() + "seam.jun");
+	junReader.displayJunctions();
 
 	//ISEAM();
 	//GSEAM();
