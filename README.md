@@ -1,4 +1,4 @@
-# readSEAM
+# readSEAM_inputFiles
 
 This script works for reading and storing the input files for SEAM solver and was written by using C++.
 
