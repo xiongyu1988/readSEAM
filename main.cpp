@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -12,8 +11,6 @@
 #include "SubFileReader.h"
 #include "ExcFileReader.h"
 #include "JunFileReader.h"
-
-std::string UNIFIL, FNCFIL;
 
 int main()
 {
