@@ -5,26 +5,39 @@
 #include <map>
 #include <vector>
 
-//!FIELD NAME                        DESCRIPTION
-//!
-//!EXTYP:    Excitation type
-//!0 = Power, 1 = Force, 2 = Displacement, 3 = Velocity,
-//!4 = Acceleration, 5 = Modal power
-//!For CASE# 4 and 5, EXTYP = 1 is pressure for acoustic spaces
-//!CASE#:    Location of excitation or average excitation level
-//!1 = Middle of subsystem, 2 = Edge of subsystem, 3 = Junction,
-//!4 = Average rms level, 5 = Average dB level
-//!Cases 1 - 3 are point inputs, 4 and 5 are reverberant levels
-//!S# / J# : Subsystem or junction number
-//!CONSTANT : Power or rms force, displacement, velocity, or
-//!acceleration at 1 Hz
-//!For CASE# 5, CONSTANT = dB level referenced to structural
-//!or acoustic reference quantity specified in parameter file
-//!EXPONENT: Frequency exponent
-//!Power or rms = CONSTANT * f(Hz) * *EXPONENT
-//!EX_BW : Flag for excitation standard deviation bandwidth
-//!0 = Pure tone(narrow band), 1 = Analysis bandwidth specified
-//!in parameter file
+// SEAM EXCITATION FILE TEMPLATE (REV 3.0)
+//
+// FIELD NAME                        DESCRIPTION
+// 
+//   EXTYP:    Excitation type
+//             0=Power, 1=Force, 2=Displacement, 3=Velocity,
+//             4=Acceleration , 5 = Modal power
+//             For CASE# 4 and 5, EXTYP=1 is pressure for acoustic spaces
+//   CASE#:    Location of excitation or average excitation level
+//             1=Middle of subsystem, 2=Edge of subsystem, 3=Junction,
+//             4=Average rms level,  5=Average dB level
+//             Cases 1-3 are point inputs, 4 and 5 are reverberant levels
+//   S#/J#:    Subsystem or junction number
+//   CONSTANT: Power or rms force, displacement, velocity, or
+//             acceleration at 1 Hz
+//             For CASE# 5, CONSTANT = dB level referenced to structural
+//             or acoustic reference quantity specified in parameter file
+//   EXPONENT: Frequency exponent
+//             Power or rms = CONSTANT * f(Hz)**EXPONENT
+//   EX_BW:    Flag for excitation standard deviation bandwidth
+//             0=Pure tone (narrow band), 1=Analysis bandwidth specified
+//             in parameter file
+//
+// Example of excitation input:
+//
+//EXTYP CASE# S#/J#  CONSTANT  EXPONENT EX_BW        COMMENTS
+//-----X-----X-----X---------X---------X-----X 
+//    1     2    10       1.0        0.     0 Point force on sub 10, edge
+//
+//((excdata
+//EXTYP CASE# S#/J#  CONSTANT  EXPONENT EX_BW        COMMENTS
+//-----X-----X-----X---------X---------X-----X
+//))
 
 class SubsystemExcitation {
 public:
