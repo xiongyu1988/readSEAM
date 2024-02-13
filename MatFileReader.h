@@ -4,6 +4,8 @@
 #include <string>
 #include <map>
 #include <vector>
+#include <cctype> 
+#include <cstdlib> 
 
 // SEAM MATERIAL FILE TEMPLATE (REV 3.0)
 //
@@ -127,6 +129,8 @@ public:
 	std::string subsystemId;
 	std::string type; // Material type
 	std::vector<double> properties;
+	//std::vector<std::pair<double, double>> freqProperties;
+	std::map<int, std::vector<std::pair<double, double>>> 	freqProperties;
 
 	SubsystemMaterial(std::string id, std::string tp)
 		: subsystemId(std::move(id)), type(std::move(tp)) {}
@@ -135,9 +139,46 @@ public:
 class MatFileReader {
 private:
 	std::map<std::string, SubsystemMaterial> materials;
-
+	std::map<int, std::vector<std::pair<double, double>>> freqValTables; // Map to store frequency values by index
+	std::vector<std::pair<double, double>> 	freqValTables0; 
 public:
 
+	// Function to check if a string is numeric (simple version)
+	bool isNumeric(const std::string& str) {
+		char* end;
+		std::strtod(str.c_str(), &end); // Use strtod to try to convert the string to a double
+		return end != str.c_str() && *end == '\0'; // Check if conversion was successful and consumed the entire string
+	}
+
+	// Function to parse a line containing mixed data and tags
+	void parseLine(const std::string& line) {
+		std::istringstream iss(line);
+		std::string field;
+		std::vector<double> numbers;
+		std::vector<std::string> tags;
+
+		while (iss >> field) {
+			if (isNumeric(field)) {
+				// Convert and store numeric value
+				numbers.push_back(std::strtod(field.c_str(), nullptr));
+			}
+			else {
+				// Store tag directly
+				tags.push_back(field);
+			}
+		}
+
+		// Example output to demonstrate parsing
+		std::cout << "Numbers: ";
+		for (double num : numbers) {
+			std::cout << num << " ";
+		}
+		std::cout << "\nTags: ";
+		for (const std::string& tag : tags) {
+			std::cout << tag << " ";
+		}
+		std::cout << std::endl;
+	}
 
 	void readMatFile(const std::string& filename) {
 		std::ifstream file(filename);
@@ -148,6 +189,8 @@ public:
 			return;
 		}
 
+		bool inFreqValSection = false;
+		int freqValIndex = 0; // Index to track frequency-dependent sections
 		std::string currentSubsystemId;
 		std::string currentType;
 		int lineCount = 1;
@@ -157,7 +200,7 @@ public:
 			if (line[0] == '!') {
 				continue;
 			}
-			if (line[0] == '(') {
+			if (line[0] == '(' && line[1] != 'F') {
 				continue;
 			}
 			if (line[0] == ')') {
@@ -172,17 +215,48 @@ public:
 				lineCount = 2;
 				continue;
 			}
+			std::vector<int> tempFreqValTableId;
 			if (!line.empty() && line[0] != '(' && line[0] != '!' && lineCount == 2) {
 				// Read properties
-				double prop;
-				while (iss >> prop) {
+
+				std::string field;
+				std::vector<double> numbers;
+				std::vector<std::pair<std::string, std::string>> tags;
+				while (iss >> field) {
 					auto it = materials.find(currentSubsystemId);
-					if (it != materials.end()) {
-						it->second.properties.push_back(prop);
+					if (isNumeric(field)) {
+						// Convert and store numeric value
+						it->second.properties.push_back(std::strtod(field.c_str(), nullptr));
+					}
+					else {
+						// Store tag directly
+						tags.emplace_back(currentSubsystemId,field );
 					}
 				}
 				lineCount = 1;
-				continue;
+			}
+			// Detecting frequency-dependent section
+			if (line.find("(FREQVAL") != std::string::npos) {
+				inFreqValSection = true;
+				std::string nextLine;
+				getline(file, nextLine);
+				std::istringstream issNextLine(nextLine);
+				issNextLine >> std::ws; // Eat up any leading whitespace
+				issNextLine >> freqValIndex; // Read the frequency table index
+				while (getline(file, nextLine)) {
+					if (nextLine[0] == ')' && nextLine[1] != ')') { 
+						lineCount = 1; 
+						break; }
+					double freq, val;
+					std::istringstream issNextLineAgain(nextLine);
+					issNextLineAgain >> freq >> val;
+					//freqValTables[freqValIndex].emplace_back(freq, val);
+					freqValTables0.emplace_back(freq, val);
+
+				}
+				auto it = materials.find(currentSubsystemId);
+				it->second.freqProperties.insert({ freqValIndex, freqValTables0 });
+				freqValTables0.clear();
 			}
 		}
 
@@ -197,6 +271,20 @@ public:
 			std::cout << "Properties: ";
 			for (double prop : mat.properties) {
 				std::cout << prop << " ";
+			}
+			if (!mat.freqProperties.empty()) {
+				std::cout << std::endl;
+				std::cout << "Frequency-dependent Properties: ";
+				std::cout << std::endl;
+				for (auto it = mat.freqProperties.begin(); it != mat.freqProperties.end(); it++)
+				{
+					std::cout << it->first << ": \n";
+					std::cout << "   Freq" << "       " << "  Value" << std::endl;
+					for (auto i : it->second) {
+						std::cout << i.first << "       " << i.second << std::endl;
+					}
+
+				}
 			}
 			std::cout << std::endl << std::endl;
 		}

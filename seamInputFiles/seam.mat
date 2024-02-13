@@ -7,10 +7,22 @@
 !-----X---------X---------X---------X---------X---------X---------X
 ! Subsystem materials for element: AC1_#1
     11                 Gas                    
-       1.200E+00 3.400E+02 1.600E-02                              
+       1.200E+00 3.400E+02         #1 
+(FREQVAL
+     1
+       1.000E+02 6.500E-03
+       5.000E+02 6.500E-03
+       5.000E+04 6.500E-04
+)                                
 ! Subsystem materials for element: AC2_#2
     21                 Gas                    
-       1.200E+00 3.400E+02 1.600E-02                              
+       1.200E+00 3.400E+02         #3   
+(FREQVAL
+     3
+       1.000E+02 6.500E-03
+       5.000E+02 6.500E-03
+       5.000E+04 6.500E-04
+)                               
 ! Subsystem materials for element: AC3_#3
     31                 Gas                    
        1.200E+00 3.400E+02 1.600E-02                              
